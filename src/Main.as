@@ -201,7 +201,7 @@ package
 		}
 		
 		private function _onSaveClicked(pEvent:Event) : void {
-			Main.costumes.saveMovieClipAsBitmap(curMonsterTray.figure, "monster"+curMonsterTray.data.id, curMonsterTray.figure.scaleX);
+			Main.costumes.saveMovieClipAsBitmap(curMonsterTray.figure, "monster"+curMonsterTray.data.id, curMonsterTray.figureScale);
 		}
 		
 		private function _onRandomizeDesignClicked(pEvent:Event) : void {
