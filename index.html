@@ -3,6 +3,7 @@
 <head>
 	<title>Dead Maze Bestiary</title>
 	<link rel="icon" href="/favicon.ico" />
+	<meta charset="UTF-8">
 	
 	<meta name="author" content="Fewfre" />
 	
@@ -11,7 +12,7 @@
 			margin: 0;
 		}
 		html, body {
-			height: 100%;
+			min-height: 100%;
 		}
 		body {
 			background: #003816 center top no-repeat;
@@ -44,6 +45,10 @@
 			padding: 8px 25px 0;
 			margin: 0 auto;
 			border-bottom: 5px solid currentColor;
+		}
+		#nav {
+			position: relative;
+			top: -4px;
 		}
 		#content {
 			
@@ -100,6 +105,23 @@
 			<section>
 				<a href="http://deadmaze.wikia.com" style="float:left; margin-right:5px;"><img src="http://vignette4.wikia.nocookie.net/deadmaze/images/8/89/Wiki-wordmark.png" /></a>
 				<p>This bestiary was made for use by the <a href="http://deadmaze.wikia.com">Dead Maze Wiki</a> in retrieving images.<br />However, it has been expanded to be a full-fledged easy to use bestiary.<br />Please enjoy!</p>
+			</section>
+			<section style="padding-bottom:0;">
+				Feel free to chat below! Please flag any inappropriate comments or spam.
+				<div id="disqus_thread"></div>
+				<script>
+				var disqus_config = function () {
+					// this.page.url = "http://projects.fewfre.com/a801/deadmaze/bestiary/";
+					this.page.identifier = "a801-deadmaze-bestiary";
+				};
+				(function() { // DON'T EDIT BELOW THIS LINE
+					var d = document, s = d.createElement('script');
+					s.src = '//fewfre.disqus.com/embed.js';
+					s.setAttribute('data-timestamp', +new Date());
+					(d.head || d.body).appendChild(s);
+				})();
+				</script>
+				<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 			</section>
 		</div>
 		<div class="push"></div>

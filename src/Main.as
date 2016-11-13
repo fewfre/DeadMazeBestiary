@@ -1,4 +1,4 @@
-package 
+package
 {
 	import com.adobe.images.*;
 	import com.piterwilson.utils.*;
@@ -33,9 +33,7 @@ package
 		internal var character		: Character;
 		internal var loaderDisplay	: LoaderDisplay;
 		
-		internal var animateButton	: SpriteButton;
-		internal var linkTray		: LinkTray;
-		internal var scaleSlider	: FancySlider;
+		internal var _toolbox		: Toolbox;
 		
 		internal var monsterTrayCont:Sprite;
 		internal var curMonsterTray:MonsterTray;
@@ -61,7 +59,7 @@ package
 			stage.scaleMode = StageScaleMode.NO_SCALE;
 			stage.frameRate = 10;
 			
-			addEventListener(Event.ENTER_FRAME, update);
+			BrowserMouseWheelPrevention.init(stage);
 			stage.addEventListener(MouseEvent.MOUSE_WHEEL, handleMouseWheel);
 		}
 		
@@ -75,47 +73,14 @@ package
 			costumes.init();
 			
 			/****************************
-			* Create Character
-			*****************************/
-			/*var parms:flash.net.URLVariables = null;
-			try {
-				var urlPath:String = ExternalInterface.call("eval", "window.location.href");
-				if(urlPath && urlPath.indexOf("?") > 0) {
-					urlPath = urlPath.substr(urlPath.indexOf("?") + 1, urlPath.length);
-					parms = new flash.net.URLVariables();
-					parms.decode(urlPath);
-				}
-			} catch (error:Error) { };
-			
-			this.character = addChild(new Character({ x:180, y:375,
-				skin:costumes.skins[costumes.defaultSkinIndex],
-				pose:costumes.poses[costumes.defaultPoseIndex],
-				params:parms
-			}));*/
-			
-			/****************************
 			* Setup UI
 			*****************************/
-			// Toolbox
-			var tools:RoundedRectangle = new RoundedRectangle({ x:(stage.stageWidth - 365) * 0.5, y:10, width:365, height:35 });
-			tools.drawSimpleGradient(ConstantsApp.COLOR_TRAY_GRADIENT, 15, ConstantsApp.COLOR_TRAY_B_1, ConstantsApp.COLOR_TRAY_B_2, ConstantsApp.COLOR_TRAY_B_3);
-			
-			var btn:ButtonBase, tButtonSize = 28, tButtonSizeSpace=5;
-			btn = tools.addChild(new SpriteButton({ x:tButtonSizeSpace, y:4, width:tButtonSize, height:tButtonSize, obj_scale:0.4, obj:new $LargeDownload() }));
-			btn.addEventListener(ButtonBase.CLICK, _onSaveClicked);
-			
-			animateButton = tools.addChild(new SpriteButton({ x:tButtonSizeSpace+(tButtonSize+tButtonSizeSpace), y:4, width:tButtonSize, height:tButtonSize, obj_scale:0.5, obj:new $PauseButton() }));
-			animateButton.addEventListener(ButtonBase.CLICK, _onPlayerAnimationToggle);
-			
-			/*btn = tools.addChild(new SpriteButton({ x:tButtonSizeSpace+(tButtonSize+tButtonSizeSpace)*2, y:4, width:tButtonSize, height:tButtonSize, obj_scale:0.5, obj:new $Refresh() }));
-			btn.addEventListener(ButtonBase.CLICK, _onRandomizeDesignClicked);*/
-			
-			btn = tools.addChild(new SpriteButton({ x:tools.width-tButtonSizeSpace-tButtonSize, y:4, width:tButtonSize, height:tButtonSize, obj_scale:0.35, obj:new $GitHubIcon() }));
-			btn.addEventListener(ButtonBase.CLICK, function():void { navigateToURL(new URLRequest(ConstantsApp.SOURCE_URL), "_blank");  });
-			
-			var tSliderWidth = 315 - (tButtonSize+tButtonSizeSpace)*3.5;
-			this.scaleSlider = tools.addChild(new FancySlider({ value: 20, min:10, max:30, x:tools.width*0.5-tSliderWidth*0.5+(tButtonSize+tButtonSizeSpace)*0.5, y:tools.Height*0.5, width:tSliderWidth }));
-			this.scaleSlider.addEventListener(FancySlider.CHANGE, _onScaleSliderChange);
+			// Toolbox - addChild() called at end of function so it ends up on top
+			_toolbox = new Toolbox({
+				x:stage.stageWidth*0.5, y:28, character:character,
+				onSave:_onSaveClicked, onAnimate:_onPlayerAnimationToggle, onRandomize:_onRandomizeDesignClicked,
+				onScale:_onScaleSliderChange
+			});
 			
 			/****************************
 			* Create tabs and panes
@@ -170,34 +135,28 @@ package
 			tRightClickPane.graphics.moveTo(70, 0);
 			tRightClickPane.graphics.lineTo(30, 40);
 			
-			addChild(tools); // We want it to be on top, but need to declare slider earlier on.
-		}
-		
-		public function update(pEvent:Event):void
-		{
-			if(loaderDisplay != null) { loaderDisplay.update(0.1); }
+			addChild(_toolbox); // We want it to be on top, but need to declare slider earlier on.
 		}
 		
 		private function handleMouseWheel(pEvent:MouseEvent) : void {
 			//if(this.mouseX < this.shopTabs.x) {
-				scaleSlider.updateViaMouseWheelDelta(pEvent.delta);
-				curMonsterTray.figureScale = scaleSlider.getValueAsScale();
+				_toolbox.scaleSlider.updateViaMouseWheelDelta(pEvent.delta);
+				curMonsterTray.figureScale = _toolbox.scaleSlider.getValueAsScale();
 			//}
 		}
 		
 		private function _onScaleSliderChange(pEvent:Event):void {
-			curMonsterTray.figureScale = scaleSlider.getValueAsScale();
+			curMonsterTray.figureScale = _toolbox.scaleSlider.getValueAsScale();
 		}
 		
 		private function _onPlayerAnimationToggle(pEvent:Event):void {
 			costumes.animatePose = !costumes.animatePose;
 			if(costumes.animatePose) {
 				curMonsterTray.figure.play();
-				animateButton.ChangeImage(new $PauseButton());
 			} else {
 				curMonsterTray.figure.stop();
-				animateButton.ChangeImage(new $PlayButton());
 			}
+			_toolbox.toggleAnimateButtonAsset(costumes.animatePose);
 		}
 		
 		private function _onSaveClicked(pEvent:Event) : void {
@@ -222,7 +181,7 @@ package
 				if(curMonsterTray) { monsterTrayCont.removeChild(curMonsterTray); }
 				curMonsterTrayIndex = pNum < 0 ? tabPanes.length+pNum : ( pNum >= tabPanes.length ? tabPanes.length-pNum : pNum );
 				curMonsterTray = monsterTrayCont.addChild(tabPanes[curMonsterTrayIndex]);
-				curMonsterTray.open(scaleSlider.value*0.1);
+				curMonsterTray.open(_toolbox.scaleSlider.value*0.1);
 			}
 		//}END tMonsterTray Management
 	}
