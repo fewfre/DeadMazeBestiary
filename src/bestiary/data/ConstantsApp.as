@@ -12,6 +12,8 @@ package bestiary.data
 		/****************************
 		* General
 		*****************************/
+		public static const VERSION					: int = 1.0;
+		public static var LANG						: String= "en";
 		public static const SOURCE_URL				: String = "https://github.com/fewfre/DeadMazeBestiary";
 		
 		public static const MONSTERS_COUNT			: int = 50;

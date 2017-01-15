@@ -1,0 +1,20 @@
+{
+	"defaultFont": "Verdana",
+	"defaultScale": 1,
+	"strings": {
+		"example":				{
+			"text":"Only text field is required. Scale is 1 by default. Any {0}s will be replaced by a value. Comma placement is important.",
+			"scale":0.7,
+			"font":"Wingdings"
+		},
+		"example2":				{ "text":"Example", "scale":0.9, "font":"Monospace" },
+		
+		"statique":				{ "text":"Idle" },
+		"course":				{ "text":"Walk" },
+		"attaque":				{ "text":"Attack" },
+		"touche":				{ "text":"Hit" },
+		"mort":					{ "text":"Death" },
+		
+		"monster_id":			{ "text":"ID: {0}" }
+	}
+}

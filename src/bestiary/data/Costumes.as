@@ -12,14 +12,11 @@ package bestiary.data
 	public class Costumes
 	{
 		// Storage
-		public var assets:AssetManager;
-		
 		public var monsters:Array;
 		public var animatePose:Boolean;
 		
-		public function Costumes(pAssets:AssetManager) {
+		public function Costumes() {
 			super();
-			assets = pAssets;
 			animatePose = true;
 		}
 		
@@ -31,10 +28,10 @@ package bestiary.data
 			var tMonsterData:MonsterData, tClass:Class;
 			var tPoseClasses = [ "statique", "course", "attaque", "touche", "mort" ];
 			for(i = 0; i <= ConstantsApp.MONSTERS_COUNT; i++) {
-				if(assets.getLoadedClass( "$Monstre_"+i+"_mort" ) != null) {
+				if(Fewf.assets.getLoadedClass( "$Monstre_"+i+"_mort" ) != null) {
 					tMonsterData = new MonsterData(i);
 					for(j = 0; j < tPoseClasses.length; j++) {
-						tClass = assets.getLoadedClass( "$Monstre_"+i+"_"+tPoseClasses[j] );
+						tClass = Fewf.assets.getLoadedClass( "$Monstre_"+i+"_"+tPoseClasses[j] );
 						if(tClass) {
 							tMonsterData.poses.push( new ItemData({ id:tPoseClasses[j], itemClass:tClass }) );
 						}
@@ -58,10 +55,10 @@ package bestiary.data
 						var tClassMap = {  }, tClassSuccess = null;
 						tSexSpecificParts = 0;
 						for(var j = 0; j <= pData.map.length; j++) {
-							tClass = assets.getLoadedClass( tClassName = pData.base+(pData.pad ? zeroPad(i, pData.pad) : i)+(pData.after ? pData.after : "")+pData.map[j] );
+							tClass = Fewf.assets.getLoadedClass( tClassName = pData.base+(pData.pad ? zeroPad(i, pData.pad) : i)+(pData.after ? pData.after : "")+pData.map[j] );
 							if(tClass) { tClassMap[pData.map[j]] = tClass; tClassSuccess = tClass; }
 							else if(pData.sex){
-								tClass = assets.getLoadedClass( tClassName+"_"+(g==0?1:2) );
+								tClass = Fewf.assets.getLoadedClass( tClassName+"_"+(g==0?1:2) );
 								if(tClass) { tClassMap[pData.map[j]] = tClass; tClassSuccess = tClass; tSexSpecificParts++ }
 							}
 						}
@@ -74,7 +71,7 @@ package bestiary.data
 						}
 					}
 				} else {
-					tClass = assets.getLoadedClass( pData.base+(pData.pad ? zeroPad(i, pData.pad) : i)+(pData.after ? pData.after : "") );
+					tClass = Fewf.assets.getLoadedClass( pData.base+(pData.pad ? zeroPad(i, pData.pad) : i)+(pData.after ? pData.after : "") );
 					if(tClass != null) {
 						tArray.push( new ItemData({ id:i, type:pData.type, itemClass:tClass}) );
 					}
@@ -118,11 +115,11 @@ package bestiary.data
 				var tChild1:*=null;
 				var tChild2:*=null;
 				var i:int = 0;
-				while (i < copyFromMC.numChildren) 
+				while (i < copyFromMC.numChildren)
 				{
 					tChild1 = copyFromMC.getChildAt(i);
 					tChild2 = copyToMC.getChildAt(i);
-					if (tChild1.name.indexOf("Couleur") == 0 && tChild1.name.length > 7) 
+					if (tChild1.name.indexOf("Couleur") == 0 && tChild1.name.length > 7)
 					{
 						tChild2.transform.colorTransform = tChild1.transform.colorTransform;
 					}
@@ -137,10 +134,10 @@ package bestiary.data
 				var tChild:*=null;
 				var tHex:int=0;
 				var loc1:*=0;
-				while (loc1 < pMC.numChildren) 
+				while (loc1 < pMC.numChildren)
 				{
 					tChild = pMC.getChildAt(loc1);
-					if (tChild.name.indexOf("Couleur") == 0 && tChild.name.length > 7) 
+					if (tChild.name.indexOf("Couleur") == 0 && tChild.name.length > 7)
 					{
 						tHex = int("0x" + tChild.name.substr(tChild.name.indexOf("_") + 1, 6));
 						applyColorToObject(tChild, tHex);
@@ -181,10 +178,10 @@ package bestiary.data
 				var tChild:*=null;
 				var num:int = 0;
 				var i:int = 0;
-				while (i < pMC.numChildren) 
+				while (i < pMC.numChildren)
 				{
 					tChild = pMC.getChildAt(i);
-					if (tChild.name.indexOf("Couleur") == 0 && tChild.name.length > 7) 
+					if (tChild.name.indexOf("Couleur") == 0 && tChild.name.length > 7)
 					{
 						num++;
 					}

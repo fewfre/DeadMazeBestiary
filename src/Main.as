@@ -27,7 +27,6 @@ package
 	public class Main extends MovieClip
 	{
 		// Storage
-		public static var assets	: AssetManager;
 		public static var costumes	: Costumes;
 		
 		internal var character		: Character;
@@ -43,17 +42,9 @@ package
 		internal var tabPanesMap:Object; // Tab pane should be stored in here to easy access the one you desire.
 		
 		// Constructor
-		public function Main()
-		{
+		public function Main() {
 			super();
-			
-			assets = new AssetManager();
-			var tPacks = [];
-			for(var i:int = 0; i <= ConstantsApp.MONSTERS_COUNT; i++) { tPacks.push("resources/x_monstre_"+i+".swf"); }
-			assets.load(tPacks);
-			assets.addEventListener(AssetManager.LOADING_FINISHED, _onLoadComplete);
-			
-			loaderDisplay = addChild( new LoaderDisplay({ x:stage.stageWidth * 0.5, y:stage.stageHeight * 0.5, assetManager:assets }) );
+			Fewf.init();
 			
 			stage.align = StageAlign.TOP;
 			stage.scaleMode = StageScaleMode.NO_SCALE;
@@ -61,15 +52,43 @@ package
 			
 			BrowserMouseWheelPrevention.init(stage);
 			stage.addEventListener(MouseEvent.MOUSE_WHEEL, handleMouseWheel);
+			
+			// Start preload
+			Fewf.assets.load([
+				"resources/config.json",
+			]);
+			Fewf.assets.addEventListener(AssetManager.LOADING_FINISHED, _onPreloadComplete);
+
+			loaderDisplay = addChild( new LoaderDisplay({ x:stage.stageWidth * 0.5, y:stage.stageHeight * 0.5 }) );
 		}
 		
-		internal function _onLoadComplete(event:Event) : void
-		{
+		internal function _onPreloadComplete(event:Event) : void {
+			Fewf.assets.removeEventListener(AssetManager.LOADING_FINISHED, _onPreloadComplete);
+			ConstantsApp.lang = Fewf.assets.getData("config").language;
+			
+			// Start main load
+			var tPacks = [
+				"resources/i18n/"+ConstantsApp.lang+".json"
+			];
+			for(var i:int = 0; i <= ConstantsApp.MONSTERS_COUNT; i++) { tPacks.push("resources/x_monstre_"+i+".swf"); }
+			Fewf.assets.load(tPacks);
+			Fewf.assets.load(tPacks);
+			Fewf.assets.addEventListener(AssetManager.LOADING_FINISHED, _onLoadComplete);
+		}
+
+		internal function _onLoadComplete(event:Event) : void {
+			Fewf.assets.removeEventListener(AssetManager.LOADING_FINISHED, _onLoadComplete);
 			loaderDisplay.destroy();
 			removeChild( loaderDisplay );
 			loaderDisplay = null;
-				
-			costumes = new Costumes( assets );
+			
+			Fewf.i18n.parseFile(Fewf.assets.getData(ConstantsApp.lang));
+			
+			_init();
+		}
+		
+		private function _init() : void {
+			costumes = new Costumes();
 			costumes.init();
 			
 			/****************************

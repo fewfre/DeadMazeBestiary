@@ -25,7 +25,7 @@ package bestiary.world.elements
 		public function get figure() : MovieClip { return _figure; }
 		public function get data() : MonsterData { return _data; }
 		public function get figureScale():Number { return _figure.scaleX; }
-		public function set figureScale(pVal:Number) { _figure.scaleX = _figure.scaleY = pVal; }
+		public function set figureScale(pVal:Number) : void { _figure.scaleX = _figure.scaleY = pVal; }
 		
 		// Constructor
 		// pData = { data:MonsterData }
@@ -39,12 +39,7 @@ package bestiary.world.elements
 			_poseTray = addChild(new RoundedRectangle({ x:0, y:185, width:600, height:40, origin:0.5 }));
 			_poseTray.drawSimpleGradient(ConstantsApp.COLOR_TRAY_GRADIENT, 15, ConstantsApp.COLOR_TRAY_B_1, ConstantsApp.COLOR_TRAY_B_2, ConstantsApp.COLOR_TRAY_B_3);
 			
-			var tIDTextField = addChild(new TextField());
-			tIDTextField.defaultTextFormat = new TextFormat("Verdana", 18, 0xC2C2DA);
-			tIDTextField.autoSize = TextFieldAutoSize.CENTER;
-			tIDTextField.text = "ID: "+_data.id;
-			tIDTextField.x = (900*0.5) - (tIDTextField.textWidth*1) - 11;
-			tIDTextField.y = -(425*0.5) + (tIDTextField.textHeight*0.5) - 3;
+			var tIDTextField = addChild(new TextBase({ text:"monster_id", size:18, values:_data.id, x:(900*0.5)-11, y:-(425*0.5)+3, originX:1, originY:0 }));
 			
 			_buttons = [];
 			var tButton:PushButton;
