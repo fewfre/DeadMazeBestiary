@@ -1,4 +1,4 @@
-package bestiary.ui
+package app.ui
 {
 	import flash.display.*;
 	import flash.events.*;

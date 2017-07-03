@@ -15,6 +15,10 @@
 		"touche":				{ "text":"Hit" },
 		"mort":					{ "text":"Death" },
 		
-		"monster_id":			{ "text":"ID: {0}" }
+		"monster_id":			{ "text":"ID: {0}" },
+		
+		"loading":				{ "text":"Items left to load: {0}" },
+		"loading_finished":		{ "text":"Loading complete. Initializing..." },
+		"loading_progress":		{ "text":"{0}" }
 	}
 }

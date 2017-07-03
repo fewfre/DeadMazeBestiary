@@ -1,8 +1,8 @@
-package bestiary.ui.buttons
+package app.ui.buttons
 {
 	import com.fewfre.display.ButtonBase;
-	import bestiary.data.*;
-	import bestiary.ui.*;
+	import app.data.*;
+	import app.ui.*;
 	import flash.display.*;
 	import flash.events.MouseEvent;
 	import flash.text.*;

@@ -1,26 +1,30 @@
-package bestiary.data
+package app.data
 {
 	import com.adobe.images.*;
 	import com.fewfre.utils.*;
-	import bestiary.data.*;
-	import bestiary.world.data.*;
-	import bestiary.world.elements.*;
+	import app.data.*;
+	import app.world.data.*;
+	import app.world.elements.*;
 	import flash.display.*;
 	import flash.geom.*;
 	import flash.net.*;
 	
 	public class Costumes
 	{
+		private static var _instance:Costumes;
+		public static function get instance() : Costumes {
+			if(!_instance) { new Costumes(); }
+			return _instance;
+		}
+		
 		// Storage
 		public var monsters:Array;
 		public var animatePose:Boolean;
 		
 		public function Costumes() {
-			super();
-			animatePose = true;
-		}
-		
-		public function init() : Costumes {
+			if(_instance){ throw new Error("Singleton class; Call using Costumes.instance"); }
+			_instance = this;
+			
 			var i:int, j:int;
 			
 			this.monsters = new Array();
@@ -39,8 +43,6 @@ package bestiary.data
 					this.monsters.push( tMonsterData );
 				}
 			}
-			
-			return this;
 		}
 		
 		// pData = { base:String, type:String, after:String, pad:int, map:Array, sex:Boolean }

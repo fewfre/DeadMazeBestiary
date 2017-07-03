@@ -1,4 +1,4 @@
-package
+package app
 {
 	import com.adobe.images.*;
 	import com.piterwilson.utils.*;
@@ -7,12 +7,12 @@ package
 	import com.fewfre.events.*;
 	import com.fewfre.utils.*;
 	
-	import bestiary.ui.*;
-	import bestiary.ui.panes.*;
-	import bestiary.ui.buttons.*;
-	import bestiary.data.*;
-	import bestiary.world.data.*;
-	import bestiary.world.elements.*;
+	import app.ui.*;
+	import app.ui.panes.*;
+	import app.ui.buttons.*;
+	import app.data.*;
+	import app.world.data.*;
+	import app.world.elements.*;
 	
 	import fl.controls.*;
 	import fl.events.*;
@@ -27,7 +27,7 @@ package
 	public class Main extends MovieClip
 	{
 		// Storage
-		public static var costumes	: Costumes;
+		private var costumes		: Costumes;
 		
 		internal var character		: Character;
 		internal var loaderDisplay	: LoaderDisplay;
@@ -88,8 +88,7 @@ package
 		}
 		
 		private function _init() : void {
-			costumes = new Costumes();
-			costumes.init();
+			costumes = Costumes.instance;
 			
 			/****************************
 			* Setup UI
@@ -179,7 +178,7 @@ package
 		}
 		
 		private function _onSaveClicked(pEvent:Event) : void {
-			Main.costumes.saveMovieClipAsBitmap(curMonsterTray.figure, "monster"+curMonsterTray.data.id, curMonsterTray.figureScale);
+			Costumes.instance.saveMovieClipAsBitmap(curMonsterTray.figure, "monster"+curMonsterTray.data.id, curMonsterTray.figureScale);
 		}
 		
 		private function _onRandomizeDesignClicked(pEvent:Event) : void {

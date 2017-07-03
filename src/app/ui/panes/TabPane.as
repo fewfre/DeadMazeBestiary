@@ -1,8 +1,8 @@
-package bestiary.ui.panes
+package app.ui.panes
 {
-	import bestiary.data.*;
-	import bestiary.ui.*;
-	import bestiary.ui.buttons.*;
+	import app.data.*;
+	import app.ui.*;
+	import app.ui.buttons.*;
 	import fl.containers.*;
 	import flash.display.*;
 	

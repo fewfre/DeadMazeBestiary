@@ -1,9 +1,9 @@
-package bestiary.ui
+package app.ui
 {
 	import com.fewfre.display.ButtonBase;
-	import bestiary.data.*;
-	import bestiary.ui.*;
-	import bestiary.ui.buttons.*;
+	import app.data.*;
+	import app.ui.*;
+	import app.ui.buttons.*;
 	import flash.display.*;
 	import flash.net.*;
 	
@@ -33,7 +33,7 @@ package bestiary.ui
 			
 			animateButton = addChild(new SpriteButton({ x:tX+tButtonXInc+tButtonsOnLeft, y:tY, width:tButtonSize, height:tButtonSize, obj_scale:0.5, obj:new MovieClip(), origin:0.5 }));
 			animateButton.addEventListener(ButtonBase.CLICK, pData.onAnimate);
-			toggleAnimateButtonAsset(Main.costumes.animatePose);
+			toggleAnimateButtonAsset(Costumes.instance.animatePose);
 			tButtonsOnLeft++;
 
 			/*btn = addChild(new SpriteButton({ x:tX+tButtonXInc*tButtonsOnLeft, y:tY, width:tButtonSize, height:tButtonSize, obj_scale:0.5, obj:new $Refresh(), origin:0.5 }));

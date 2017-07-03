@@ -1,8 +1,8 @@
-package bestiary.ui 
+package app.ui 
 {
-	import bestiary.data.*;
-	import bestiary.ui.*;
-	import bestiary.ui.buttons.*;
+	import app.data.*;
+	import app.ui.*;
+	import app.ui.buttons.*;
 	import flash.display.*;
 	import flash.display.Shape;
 	import flash.events.*;

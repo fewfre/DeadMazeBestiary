@@ -1,11 +1,11 @@
-package bestiary.world.elements
+package app.world.elements
 {
 	import com.fewfre.display.*;
 	import com.fewfre.events.*;
-	import bestiary.data.*;
-	import bestiary.ui.*;
-	import bestiary.ui.buttons.*;
-	import bestiary.world.data.*;
+	import app.data.*;
+	import app.ui.*;
+	import app.ui.buttons.*;
+	import app.world.data.*;
 	import fl.containers.*;
 	import flash.display.*;
 	import flash.text.*;
@@ -71,7 +71,7 @@ package bestiary.world.elements
 			if(_figure) { tScale = figureScale; _monsterTray.removeChild(_figure); }
 			_figure = _monsterTray.addChild(new _data.poses[e.data.index].itemClass());
 			figureScale = tScale;
-			toggleAnimation(Main.costumes.animatePose);
+			toggleAnimation(Costumes.instance.animatePose);
 			untoggle(e.target);
 		}
 		

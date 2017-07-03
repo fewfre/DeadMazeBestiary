@@ -1,6 +1,6 @@
-package bestiary.world.data
+package app.world.data
 {
-	import bestiary.data.*;
+	import app.data.*;
 	import flash.display.*;
 	import flash.geom.*;
 	

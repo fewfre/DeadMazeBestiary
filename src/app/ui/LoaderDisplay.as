@@ -1,9 +1,9 @@
-package bestiary.ui
+package app.ui
 {
 	import com.fewfre.display.*;
 	import com.fewfre.utils.*;
 	import com.fewfre.events.FewfEvent;
-	import bestiary.data.*;
+	import app.data.*;
 	import flash.display.*;
 	import flash.events.*
 	import flash.text.*;

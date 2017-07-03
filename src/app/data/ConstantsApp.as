@@ -1,4 +1,4 @@
-package bestiary.data
+package app.data
 {
 	public class ConstantsApp
 	{
@@ -12,7 +12,7 @@ package bestiary.data
 		/****************************
 		* General
 		*****************************/
-		public static const VERSION					: int = 1.0;
+		public static const VERSION					: int = 1.1;
 		public static var LANG						: String= "en";
 		public static const SOURCE_URL				: String = "https://github.com/fewfre/DeadMazeBestiary";
 		

@@ -1,8 +1,8 @@
-package bestiary.world.elements
+package app.world.elements
 {
 	import com.piterwilson.utils.*;
-	import bestiary.data.*;
-	import bestiary.world.data.*;
+	import app.data.*;
+	import app.world.data.*;
 	import flash.display.*;
 	import flash.events.*;
 	import flash.geom.*;
@@ -58,9 +58,9 @@ package bestiary.world.elements
 			outfit.scaleX = outfit.scaleY = tScale;
 			
 			outfit.apply({
-				skinColor:Main.costumes.skinColor,
-				hairColor:Main.costumes.hairColor,
-				secondaryColor:Main.costumes.secondaryColor,
+				skinColor:Costumes.instance.skinColor,
+				hairColor:Costumes.instance.hairColor,
+				secondaryColor:Costumes.instance.secondaryColor,
 				items:[
 					getItemData(ITEM.SKIN),
 					getItemData(ITEM.HAIR),
@@ -76,9 +76,9 @@ package bestiary.world.elements
 		
 		private function _parseParams(pParams:URLVariables) : void {
 			trace(pParams.toString());
-			if(pParams.hc) { Main.costumes.hairColor = uint("0x"+pParams.hc); }
-			if(pParams.sk) { Main.costumes.skinColor = uint("0x"+pParams.sk); }
-			if(pParams.oc) { Main.costumes.secondaryColor = uint("0x"+pParams.oc); }
+			if(pParams.hc) { Costumes.instance.hairColor = uint("0x"+pParams.hc); }
+			if(pParams.sk) { Costumes.instance.skinColor = uint("0x"+pParams.sk); }
+			if(pParams.oc) { Costumes.instance.secondaryColor = uint("0x"+pParams.oc); }
 			
 			_setParamToType(pParams, ITEM.SKIN, "s", false);
 			_setParamToType(pParams, ITEM.HAIR, "d");
@@ -95,7 +95,7 @@ package bestiary.world.elements
 				if(pParams[pParam] == '') {
 					tData = null;
 				} else {
-					tData = Main.costumes.getItemFromTypeID(pType, pParams[pParam]);
+					tData = Costumes.instance.getItemFromTypeID(pType, pParams[pParam]);
 				}
 			}
 			_itemDataMap[pType] = pAllowNull ? tData : ( tData == null ? _itemDataMap[pType] : tData );
@@ -104,9 +104,9 @@ package bestiary.world.elements
 		public function getParams() : URLVariables {
 			var tParms = new URLVariables();
 			
-			tParms.hc = Main.costumes.hairColor.toString(16);
-			tParms.sk = Main.costumes.skinColor.toString(16);
-			tParms.oc = Main.costumes.secondaryColor.toString(16);
+			tParms.hc = Costumes.instance.hairColor.toString(16);
+			tParms.sk = Costumes.instance.skinColor.toString(16);
+			tParms.oc = Costumes.instance.secondaryColor.toString(16);
 			
 			var tData:ItemData;
 			tParms.s = (tData = getItemData(ITEM.SKIN)) ? tData.id : '';
