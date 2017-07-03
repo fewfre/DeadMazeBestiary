@@ -1,3 +1,10 @@
+== V1.2 - 3 July 2017 ==
+- Moved most of the contents of "Main" into new class "World" to separate loading and app logic.
+- Updated ColorSwatch to be a little more user friendly (as per feedback by RichàrdIDK on Disqus)
+	- Clicking a textbox now counts as selecting the swatch.
+	- Typing in a hex code will update the value without the need to press enter first.
+
+
 == V1.1 - 3 July 2017 ==
 - Renaming "bestiary" folder to "app"
 - Moving Main from ./src to ./src/app
