@@ -1,3 +1,40 @@
 {
-	"language": "en"
+	"language": "en",
+	"packs": {
+		"monsters": [
+			"x_monstre_1.swf",
+			"x_monstre_2.swf",
+			"x_monstre_3.swf",
+			"x_monstre_4.swf",
+			"x_monstre_5.swf",
+			"x_monstre_6.swf",
+			"x_monstre_7.swf",
+			"x_monstre_8.swf",
+			"x_monstre_9.swf",
+			"x_monstre_10.swf",
+			"x_monstre_11.swf",
+			"x_monstre_12.swf",
+			"x_monstre_13.swf",
+			"x_monstre_14.swf",
+			"x_monstre_15.swf",
+			"x_monstre_16.swf",
+			"x_monstre_17.swf",
+			"x_monstre_18.swf",
+			"x_monstre_19.swf",
+			"x_monstre_20.swf",
+			"x_monstre_21.swf",
+			"x_monstre_22.swf",
+			"x_monstre_23.swf",
+			"x_monstre_24.swf",
+			"x_monstre_25.swf",
+			"x_monstre_26.swf",
+			"x_monstre_27.swf",
+			"x_monstre_28.swf",
+			"x_monstre_29.swf",
+			"x_monstre_31.swf",
+			"x_monstre_40.swf",
+			"x_monstre_41.swf",
+			"x_monstre_42.swf"
+		]
+	}
 }

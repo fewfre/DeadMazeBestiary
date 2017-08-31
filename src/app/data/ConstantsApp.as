@@ -12,11 +12,11 @@ package app.data
 		/****************************
 		* General
 		*****************************/
-		public static const VERSION					: int = 1.2;
+		public static const VERSION					: String = "1.3";
 		public static var LANG						: String= "en";
 		public static const SOURCE_URL				: String = "https://github.com/fewfre/DeadMazeBestiary";
 		
-		public static const MONSTERS_COUNT			: int = 50;
+		public static const MONSTERS_COUNT			: int = 65;
 		
 		public static const DEFAULT_SKIN_ID			: int = 0;
 		public static const DEFAULT_POSE_ID			: int = 0;
