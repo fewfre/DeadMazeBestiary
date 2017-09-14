@@ -1,0 +1,20 @@
+{
+	"defaultFont": "Verdana",
+	"defaultScale": 1,
+	"strings": {
+		"loading_progress":		{ "text":"{0}" },
+		"monster_id":			{ "text":"ID: {0}" },
+		
+		"loading":				{ "text":"Items Restliche Downloads: {0}" },
+		"loading_finished":		{ "text":"Fertig geladen. Initialisieren..." },
+		"version":				{ "text":"Version: {0}" },
+		"translated_by":		{ "text":"Übersetzt von: Virus_Code" },
+		
+		"statique":				{ "text":"Untätig" },
+		"course":				{ "text":"Laufen" },
+		"attaque":				{ "text":"Angreifen" },
+		"touche":				{ "text":"Treffer" },
+		"stun":					{ "text":"Stun" },
+		"mort":					{ "text":"Tod" }
+	}
+}

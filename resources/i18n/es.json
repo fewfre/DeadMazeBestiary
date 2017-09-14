@@ -1,0 +1,20 @@
+{
+	"defaultFont": "Verdana",
+	"defaultScale": 1,
+	"strings": {
+		"loading_progress":		{ "text":"{0}" },
+		"monster_id":			{ "text":"ID: {0}" },
+		
+		"loading":				{ "text":"Elementos a cargar : {0}" },
+		"loading_finished":		{ "text":"Carga completa. Iniciando..." },
+		"version":				{ "text":"Versión: {0}" },
+		"translated_by":		{ "text":"Traducido por: Chamelinct" },
+		
+		"statique":				{ "text":"Libre" },
+		"course":				{ "text":"Caminar" },
+		"attaque":				{ "text":"Atacar" },
+		"touche":				{ "text":"Golpear" },
+		"stun":					{ "text":"Stun" },
+		"mort":					{ "text":"Muerte" }
+	}
+}

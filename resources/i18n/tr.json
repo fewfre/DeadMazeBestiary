@@ -1,0 +1,20 @@
+{
+	"defaultFont": "Verdana",
+	"defaultScale": 1,
+	"strings": {
+		"loading_progress":		{ "text":"{0}" },
+		"monster_id":			{ "text":"Kimlik: {0}" },
+		
+		"loading":				{ "text":"Yüklenmesi için geriye kalan ögeler: {0}" },
+		"loading_finished":		{ "text":"Yükleme tamamlandı. Başlatılıyor..." },
+		"version":				{ "text":"Sürüm: {0}" },
+		"translated_by":		{ "text":"Çeviri: Honorabilis" },
+		
+		"statique":				{ "text":"Boş" },
+		"course":				{ "text":"Yürüyüş" },
+		"attaque":				{ "text":"Saldırı" },
+		"touche":				{ "text":"Vuruş" },
+		"stun":					{ "text":"Stun" },
+		"mort":					{ "text":"Ölüm" }
+	}
+}

@@ -1,0 +1,20 @@
+{
+	"defaultFont": "Verdana",
+	"defaultScale": 1,
+	"strings": {
+		"loading_progress":		{ "text":"{0}" },
+		"monster_id":			{ "text":"ID: {0}" },
+		
+		"loading":				{ "text":"Предметов осталось для загрузки: {0}" },
+		"loading_finished":		{ "text":"Загрузка завершена. Инициализация..." },
+		"version":				{ "text":"Версия: {0}" },
+		"translated_by":		{ "text":"Переведено: Cakeslices" },
+		
+		"statique":				{ "text":"Бездейс-\nтвовать", "scale":0.8 },
+		"course":				{ "text":"Xодить" },
+		"attaque":				{ "text":"Атаковать" },
+		"touche":				{ "text":"Бить" },
+		"stun":					{ "text":"Stun" },
+		"mort":					{ "text":"Cмерть" }
+	}
+}

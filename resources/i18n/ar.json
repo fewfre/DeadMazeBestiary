@@ -1,0 +1,20 @@
+{
+	"defaultFont": "Verdana",
+	"defaultScale": 1,
+	"strings": {
+		"loading_progress":		{ "text":"{0}" },
+		"monster_id":			{ "text":"هوية: {0}" },
+		
+		"loading":				{ "text":"العناصر المتبقية للتحميل: {0}" },
+		"loading_finished":		{ "text":"اكتمل التحميل. جار التهيئة..." },
+		"version":				{ "text":"الإصدار: {0}" },
+		"translated_by":		{ "text":"الترجمة من طرف: Hmiida" },
+		
+		"statique":				{ "text":"خامل" },
+		"course":				{ "text":"المشي" },
+		"attaque":				{ "text":"الهجوم" },
+		"touche":				{ "text":"الضرب" },
+		"stun":					{ "text":"Stun" },
+		"mort":					{ "text":"الموت" }
+	}
+}

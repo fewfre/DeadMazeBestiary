@@ -1,0 +1,20 @@
+{
+	"defaultFont": "Verdana",
+	"defaultScale": 1,
+	"strings": {
+		"loading_progress":		{ "text":"{0}" },
+		"monster_id":			{ "text":"ID: {0}" },
+		
+		"loading":				{ "text":"Rzeczy pozostałe do załadowania {0}" },
+		"loading_finished":		{ "text":"Ładowanie zakończone. Inicjowanie..." },
+		"version":				{ "text":"Wersja: {0}" },
+		"translated_by":		{ "text":"Przetłumaczone przez: Akanaria" },
+		
+		"statique":				{ "text":"Bez ruchu" },
+		"course":				{ "text":"Chód" },
+		"attaque":				{ "text":"Atak" },
+		"touche":				{ "text":"Uderzenie" },
+		"stun":					{ "text":"Stun" },
+		"mort":					{ "text":"Śmierć" }
+	}
+}

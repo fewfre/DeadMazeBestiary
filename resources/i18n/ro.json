@@ -1,0 +1,20 @@
+{
+	"defaultFont": "Verdana",
+	"defaultScale": 1,
+	"strings": {
+		"loading_progress":		{ "text":"{0}" },
+		"monster_id":			{ "text":"ID: {0}" },
+		
+		"loading":				{ "text":"Elementele rămase pentru încărcare: {0}" },
+		"loading_finished":		{ "text":"Încărcare completă. Inițializează ..." },
+		"version":				{ "text":"Versiune: {0}" },
+		"translated_by":		{ "text":"Translated by: Sky_dreams" },
+		
+		"statique":				{ "text":"Inactiv" },
+		"course":				{ "text":"Mers pe jos", "scale":0.9 },
+		"attaque":				{ "text":"Atacă" },
+		"touche":				{ "text":"Loviutură" },
+		"stun":					{ "text":"Stun" },
+		"mort":					{ "text":"Mort" }
+	}
+}

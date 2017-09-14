@@ -1,3 +1,27 @@
+== V1.4 - 13 September 2017 ==
+- Adding various languages
+- Moved over TFM Dressroom rework:
+	- V.5
+		- Added app info on top left
+			- Moved github button from Toolbox
+			- Now display app's version (using a new "version" i18n string)
+			- Now display translator's name (if app not using "en" and not blank) (using a new "translated_by" i18n string)
+		- Bug: ConstantsApp.VERSION is now stored as a string.
+		- AssetManager now stores the loaded ApplicationDomains instead of the returned content as a movieclip
+		- AssetManager now loads data into currentDomain if "useCurrentDomain" is used for that swf
+		- Moved UI assets into a separate swf
+		- Fewf class now keeps track of Stage, and has a MovieClip called "dispatcher" for global events.
+		- I18n & TextBase updated to allow for changing language during runtime.
+		- You can now change language during run-time
+	- V1.7
+		- Imgur upload option added.
+		- Resources are no longer cached.
+
+
+== V1.3 - 31 August 2017 ==
+- Slight loading rework; assets now loaded from list in config file
+
+
 == V1.2 - 3 July 2017 ==
 - Moved most of the contents of "Main" into new class "World" to separate loading and app logic.
 - Updated ColorSwatch to be a little more user friendly (as per feedback by RichàrdIDK on Disqus)

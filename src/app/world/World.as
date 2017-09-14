@@ -9,6 +9,7 @@ package app.world
 	
 	import app.ui.*;
 	import app.ui.panes.*;
+	import app.ui.lang.*;
 	import app.ui.buttons.*;
 	import app.data.*;
 	import app.world.data.*;
@@ -32,6 +33,7 @@ package app.world
 		internal var character		: Character;
 		
 		internal var _toolbox		: Toolbox;
+		internal var _langScreen	: LangScreen;
 		
 		internal var monsterTrayCont:Sprite;
 		internal var curMonsterTray:MonsterTray;
@@ -59,6 +61,19 @@ package app.world
 				onSave:_onSaveClicked, onAnimate:_onPlayerAnimationToggle, onRandomize:_onRandomizeDesignClicked,
 				onScale:_onScaleSliderChange
 			});
+			
+			// addChild() called at end of function so it ends up on top
+			var tLangButton = new LangButton({ x:22, y:17, width:30, height:25, origin:0.5 }); // y:pStage.stageHeight-17
+			tLangButton.addEventListener(ButtonBase.CLICK, _onLangButtonClicked);
+			
+			// addChild() called at end of function so it ends up on top
+			var tAppInfoBox = new AppInfoBox({ x:tLangButton.x+(tLangButton.Width*0.5)+(25*0.5)+2, y:17 });
+			
+			/****************************
+			* Screens
+			*****************************/
+			_langScreen = new LangScreen({  });
+			_langScreen.addEventListener(LangScreen.CLOSE, _onLangScreenClosed);
 			
 			/****************************
 			* Create tabs and panes
@@ -114,6 +129,8 @@ package app.world
 			tRightClickPane.graphics.lineTo(30, 40);
 			
 			addChild(_toolbox); // We want it to be on top, but need to declare slider earlier on.
+			addChild(tLangButton); // We want it to be on top
+			addChild(tAppInfoBox); // We want it to be on top
 		}
 		
 		private function _onMouseWheel(pEvent:MouseEvent) : void {
@@ -153,6 +170,16 @@ package app.world
 			var tLength = tButtons.length; if(pType == ITEM.SKIN) { /* Don't select "transparent" */ tLength--; }
 			tButtons[ Math.floor(Math.random() * tLength) ].toggleOn();
 		}
+		
+		private function _onLangButtonClicked(pEvent:Event) : void {
+			_langScreen.open();
+			addChild(_langScreen);
+		}
+
+		private function _onLangScreenClosed(pEvent:Event) : void {
+			removeChild(_langScreen);
+		}
+
 		
 		//{REGION tMonsterTray Management
 			private function _selectMonsterTray(pNum:int) : void {

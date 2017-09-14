@@ -13,12 +13,16 @@
 		"course":				{ "text":"Walk" },
 		"attaque":				{ "text":"Attack" },
 		"touche":				{ "text":"Hit" },
+		"stun":					{ "text":"Stun" },
 		"mort":					{ "text":"Death" },
 		
 		"monster_id":			{ "text":"ID: {0}" },
 		
 		"loading":				{ "text":"Items left to load: {0}" },
 		"loading_finished":		{ "text":"Loading complete. Initializing..." },
-		"loading_progress":		{ "text":"{0}" }
+		"loading_progress":		{ "text":"{0}" },
+		
+		"version":				{ "text":"Version: {0}" },
+		"translated_by":		{ "text":"Translated by: Your Name here (or remove/blank this line to not show)" }
 	}
 }

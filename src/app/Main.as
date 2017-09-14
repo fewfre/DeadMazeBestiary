@@ -8,18 +8,20 @@ package app
 
 	import flash.display.*;
 	import flash.events.*;
+	import flash.system.Capabilities;
 	
 	public class Main extends MovieClip
 	{
 		// Storage
 		private var _loaderDisplay	: LoaderDisplay;
 		private var _world			: World;
+		private var _config			: Object;
 		private var _defaultLang	: String;
 		
 		// Constructor
 		public function Main() {
 			super();
-			Fewf.init();
+			Fewf.init(stage);
 			
 			stage.align = StageAlign.TOP;
 			stage.scaleMode = StageScaleMode.NO_SCALE;
@@ -41,7 +43,8 @@ package app
 		
 		internal function _onPreloadComplete(event:Event) : void {
 			Fewf.assets.removeEventListener(AssetManager.LOADING_FINISHED, _onPreloadComplete);
-			ConstantsApp.lang = _defaultLang = Fewf.assets.getData("config").language;
+			_config = Fewf.assets.getData("config");
+			_defaultLang = _getDefaultLang(_config.languages.default);
 			
 			_startInitialLoad();
 		}
@@ -64,16 +67,18 @@ package app
 		
 		private function _onInitialLoadComplete(event:Event) : void {
 			Fewf.assets.removeEventListener(AssetManager.LOADING_FINISHED, _onInitialLoadComplete);
-			/*Fewf.i18n.parseFile(_defaultLang, Fewf.assets.getData(_defaultLang));*/
-			Fewf.i18n.parseFile(Fewf.assets.getData(ConstantsApp.lang));
+			Fewf.i18n.parseFile(_defaultLang, Fewf.assets.getData(_defaultLang));
 			
 			_startLoad();
 		}
 		
 		// Start main load
 		private function _startLoad() : void {
-			var tPacks = [];
-			var tMonsterPacks = Fewf.assets.getData("config").packs.monsters;
+			var tPacks = [
+				["resources/interface.swf", { useCurrentDomain:true }],
+				"resources/flags.swf",
+			];
+			var tMonsterPacks = _config.packs.monsters;
 			for(var i:int = 0; i < tMonsterPacks.length; i++) { tPacks.push("resources/"+tMonsterPacks[i]); }
 			Fewf.assets.load(tPacks);
 			Fewf.assets.addEventListener(AssetManager.LOADING_FINISHED, _onLoadComplete);
@@ -92,7 +97,7 @@ package app
 			var tFlagDefaultLangExists = false;
 			// http://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/flash/system/Capabilities.html#language
 			if(Capabilities.language) {
-				var tLanguages = Fewf.assets.getData("config").languages.list;
+				var tLanguages = _config.languages.list;
 				for each(tLang in tLanguages) {
 					if(Capabilities.language == tLang.code || Capabilities.language == tLang.code.split("-")[0]) {
 						return tLang.code;

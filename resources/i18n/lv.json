@@ -1,0 +1,20 @@
+{
+	"defaultFont": "Verdana",
+	"defaultScale": 1,
+	"strings": {
+		"loading_progress":		{ "text":"{0}" },
+		"monster_id":			{ "text":"ID: {0}" },
+		
+		"loading":				{ "text":"Atlikuši {0} apģērbi" },
+		"loading_finished":		{ "text":"Ielāde pabeigta. Inicializē..." },
+		"version":				{ "text":"Versija: {0}" },
+		"translated_by":		{ "text":"Tulkoja: Marciskris" },
+		
+		"statique":				{ "text":"Stāvošs" },
+		"course":				{ "text":"Ejošs" },
+		"attaque":				{ "text":"Uzbrukums" },
+		"touche":				{ "text":"Sitiens" },
+		"stun":					{ "text":"Stun" },
+		"mort":					{ "text":"Nāve" }
+	}
+}

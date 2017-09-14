@@ -1,0 +1,20 @@
+{
+	"defaultFont": "Verdana",
+	"defaultScale": 1,
+	"strings": {
+		"loading_progress":		{ "text":"{0}" },
+		"monster_id":			{ "text":"ID: {0}" },
+		
+		"loading":				{ "text":"Saker kvar att ladda {0}" },
+		"loading_finished":		{ "text":"Laddning avslutad" },
+		"version":				{ "text":"Version {0}" },
+		"translated_by":		{ "text":"Översätt av: Elinormus" },
+		
+		"statique":				{ "text":"Inaktiv" },
+		"course":				{ "text":"Gå" },
+		"attaque":				{ "text":"Attackera" },
+		"touche":				{ "text":"Slå" },
+		"stun":					{ "text":"Stun" },
+		"mort":					{ "text":"Dö" }
+	}
+}

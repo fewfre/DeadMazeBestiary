@@ -30,7 +30,7 @@ package app.data
 			this.monsters = new Array();
 			
 			var tMonsterData:MonsterData, tClass:Class;
-			var tPoseClasses = [ "statique", "course", "attaque", "touche", "mort" ];
+			var tPoseClasses = [ "statique", "course", "attaque", "touche", "stun", "mort" ];
 			for(i = 0; i <= ConstantsApp.MONSTERS_COUNT; i++) {
 				if(Fewf.assets.getLoadedClass( "$Monstre_"+i+"_mort" ) != null) {
 					tMonsterData = new MonsterData(i);

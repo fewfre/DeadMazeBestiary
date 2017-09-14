@@ -1,0 +1,20 @@
+{
+	"defaultFont": "Verdana",
+	"defaultScale": 1,
+	"strings": {
+		"loading_progress":		{ "text":"{0}" },
+		"monster_id":			{ "text":"ID: {0}" },
+		
+		"loading":				{ "text":"Stvari za učitavanje" },
+		"loading_finished":		{ "text":"Učitavanje je dovršeno. Pokreće se ..." },
+		"version":				{ "text":"Verzija: {0}" },
+		"translated_by":		{ "text":"Preveo: Brunocarfd" },
+		
+		"statique":				{ "text":"Nezaposlen", "scale":0.9 },
+		"course":				{ "text":"Hodanje" },
+		"attaque":				{ "text":"Napad" },
+		"touche":				{ "text":"Udarac" },
+		"stun":					{ "text":"Stun" },
+		"mort":					{ "text":"Smrt" }
+	}
+}
