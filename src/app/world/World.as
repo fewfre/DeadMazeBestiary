@@ -28,8 +28,6 @@ package app.world
 	public class World extends MovieClip
 	{
 		// Storage
-		private var costumes		: Costumes;
-		
 		internal var character		: Character;
 		
 		internal var _toolbox		: Toolbox;
@@ -50,7 +48,7 @@ package app.world
 		}
 		
 		private function _buildWorld(pStage:Stage) {
-			costumes = Costumes.instance;
+			GameAssets.init();
 			
 			/****************************
 			* Setup UI
@@ -87,8 +85,8 @@ package app.world
 			
 			// Create the panes
 			var tPane:MonsterTray;
-			for(var i:int = 0; i < costumes.monsters.length; i++) {
-				tPane = new MonsterTray({ data:costumes.monsters[i] });
+			for(var i:int = 0; i < GameAssets.monsters.length; i++) {
+				tPane = new MonsterTray({ data:GameAssets.monsters[i] });
 				tabPanes.push(tPane);
 			}
 			_selectMonsterTray(0);
@@ -145,17 +143,17 @@ package app.world
 		}
 		
 		private function _onPlayerAnimationToggle(pEvent:Event):void {
-			costumes.animatePose = !costumes.animatePose;
-			if(costumes.animatePose) {
+			GameAssets.animatePose = !GameAssets.animatePose;
+			if(GameAssets.animatePose) {
 				curMonsterTray.figure.play();
 			} else {
 				curMonsterTray.figure.stop();
 			}
-			_toolbox.toggleAnimateButtonAsset(costumes.animatePose);
+			_toolbox.toggleAnimateButtonAsset(GameAssets.animatePose);
 		}
 		
 		private function _onSaveClicked(pEvent:Event) : void {
-			Costumes.instance.saveMovieClipAsBitmap(curMonsterTray.figure, "monster"+curMonsterTray.data.id, curMonsterTray.figureScale);
+			GameAssets.saveMovieClipAsBitmap(curMonsterTray.figure, "monster"+curMonsterTray.data.id, curMonsterTray.figureScale);
 		}
 		
 		private function _onRandomizeDesignClicked(pEvent:Event) : void {

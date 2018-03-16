@@ -36,17 +36,24 @@ package app.world.elements
 			_monsterTray = addChild(new Sprite());
 			_monsterTray.y = 140;
 			
-			_poseTray = addChild(new RoundedRectangle({ x:0, y:185, width:600, height:40, origin:0.5 }));
+			_poseTray = addChild(new RoundedRectangle({ x:0, y:185, width:666, height:40, origin:0.5 }));
 			_poseTray.drawSimpleGradient(ConstantsApp.COLOR_TRAY_GRADIENT, 15, ConstantsApp.COLOR_TRAY_B_1, ConstantsApp.COLOR_TRAY_B_2, ConstantsApp.COLOR_TRAY_B_3);
 			
 			var tIDTextField = addChild(new TextBase({ text:"monster_id", size:18, values:_data.id, x:(900*0.5)-11, y:-(425*0.5)+3, originX:1, originY:0 }));
 			
 			_buttons = [];
 			var tButton:PushButton;
-			var tWidth = 75, tXMargin = 10, tXSpacing = tWidth + tXMargin, tX = tXMargin-(_data.poses.length*0.5*tXSpacing)-tXSpacing;
+			var tWidth = 75, tXMargin = 10, tScale = 1;
+			if(_data.poses.length > 7) {
+				tScale = (_poseTray.Width-10) / (tWidth*_data.poses.length + tXMargin*(_data.poses.length-1));
+				tWidth *= tScale;
+				tXMargin *= tScale;
+			}
+			var tXSpacing = tWidth + tXMargin, tX = -2+tXMargin-(_data.poses.length*0.5*tXSpacing)-tXSpacing;
 			for(var i:int = 0; i < _data.poses.length; i++) {
 				tButton = _poseTray.addChild(new PushButton({ x:tX += tXSpacing, y:-15, width:tWidth, height:30, data:{ index:i }, text:_data.poses[i].id, allowToggleOff:false }));
 				tButton.addEventListener(PushButton.STATE_CHANGED_BEFORE, _onPoseButtonClicked);
+				tButton.Text.size = TextBase.DEFAULT_SIZE*tScale;
 				_buttons.push(tButton);
 			}
 			_buttons[0].toggleOn();
@@ -71,7 +78,7 @@ package app.world.elements
 			if(_figure) { tScale = figureScale; _monsterTray.removeChild(_figure); }
 			_figure = _monsterTray.addChild(new _data.poses[e.data.index].itemClass());
 			figureScale = tScale;
-			toggleAnimation(Costumes.instance.animatePose);
+			toggleAnimation(GameAssets.animatePose);
 			untoggle(e.target);
 		}
 		

@@ -58,9 +58,9 @@ package app.world.elements
 			outfit.scaleX = outfit.scaleY = tScale;
 			
 			outfit.apply({
-				skinColor:Costumes.instance.skinColor,
-				hairColor:Costumes.instance.hairColor,
-				secondaryColor:Costumes.instance.secondaryColor,
+				skinColor:GameAssets.skinColor,
+				hairColor:GameAssets.hairColor,
+				secondaryColor:GameAssets.secondaryColor,
 				items:[
 					getItemData(ITEM.SKIN),
 					getItemData(ITEM.HAIR),
@@ -76,9 +76,9 @@ package app.world.elements
 		
 		private function _parseParams(pParams:URLVariables) : void {
 			trace(pParams.toString());
-			if(pParams.hc) { Costumes.instance.hairColor = uint("0x"+pParams.hc); }
-			if(pParams.sk) { Costumes.instance.skinColor = uint("0x"+pParams.sk); }
-			if(pParams.oc) { Costumes.instance.secondaryColor = uint("0x"+pParams.oc); }
+			if(pParams.hc) { GameAssets.hairColor = uint("0x"+pParams.hc); }
+			if(pParams.sk) { GameAssets.skinColor = uint("0x"+pParams.sk); }
+			if(pParams.oc) { GameAssets.secondaryColor = uint("0x"+pParams.oc); }
 			
 			_setParamToType(pParams, ITEM.SKIN, "s", false);
 			_setParamToType(pParams, ITEM.HAIR, "d");
@@ -95,7 +95,7 @@ package app.world.elements
 				if(pParams[pParam] == '') {
 					tData = null;
 				} else {
-					tData = Costumes.instance.getItemFromTypeID(pType, pParams[pParam]);
+					tData = GameAssets.getItemFromTypeID(pType, pParams[pParam]);
 				}
 			}
 			_itemDataMap[pType] = pAllowNull ? tData : ( tData == null ? _itemDataMap[pType] : tData );
@@ -104,9 +104,9 @@ package app.world.elements
 		public function getParams() : URLVariables {
 			var tParms = new URLVariables();
 			
-			tParms.hc = Costumes.instance.hairColor.toString(16);
-			tParms.sk = Costumes.instance.skinColor.toString(16);
-			tParms.oc = Costumes.instance.secondaryColor.toString(16);
+			tParms.hc = GameAssets.hairColor.toString(16);
+			tParms.sk = GameAssets.skinColor.toString(16);
+			tParms.oc = GameAssets.secondaryColor.toString(16);
 			
 			var tData:ItemData;
 			tParms.s = (tData = getItemData(ITEM.SKIN)) ? tData.id : '';

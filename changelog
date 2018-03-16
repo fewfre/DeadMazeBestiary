@@ -1,3 +1,10 @@
+== V1.5 - 15 March 2018 ==
+- Fixed bug preventing some entries from showing up
+- Added support for newer animation names
+- Renamed "Costumes" to "GameAssets" and changed it from a singleton to a static class.
+- Added some cache breaking
+
+
 == V1.4 - 13 September 2017 ==
 - Adding various languages
 - Moved over TFM Dressroom rework:

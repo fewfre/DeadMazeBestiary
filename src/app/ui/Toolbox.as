@@ -54,7 +54,7 @@ package app.ui
 			
 			animateButton = tTray.addChild(new SpriteButton({ x:tX+tButtonXInc*tButtonsOnLeft, y:tY, width:tButtonSize, height:tButtonSize, obj_scale:0.5, obj:new MovieClip(), origin:0.5 }));
 			animateButton.addEventListener(ButtonBase.CLICK, pData.onAnimate);
-			toggleAnimateButtonAsset(Costumes.instance.animatePose);
+			toggleAnimateButtonAsset(GameAssets.animatePose);
 			tButtonsOnLeft++;
 			
 			// ### Right Side Buttons ###

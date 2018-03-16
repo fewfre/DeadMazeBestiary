@@ -9,30 +9,22 @@ package app.data
 	import flash.geom.*;
 	import flash.net.*;
 	
-	public class Costumes
+	public class GameAssets
 	{
-		private static var _instance:Costumes;
-		public static function get instance() : Costumes {
-			if(!_instance) { new Costumes(); }
-			return _instance;
-		}
-		
 		// Storage
-		public var monsters:Array;
-		public var animatePose:Boolean;
+		public static var monsters:Array;
+		public static var animatePose:Boolean;
 		
-		public function Costumes() {
-			if(_instance){ throw new Error("Singleton class; Call using Costumes.instance"); }
-			_instance = this;
-			
+		public static function init() : void {
 			var i:int, j:int;
 			
-			this.monsters = new Array();
+			monsters = new Array();
 			
 			var tMonsterData:MonsterData, tClass:Class;
-			var tPoseClasses = [ "statique", "course", "attaque", "touche", "stun", "mort" ];
+			var tPoseClasses = [ "statique", "statique/Combat", "assis", "course", "course/Course", "attaque", "touche", "stun", "mort", "sort_1", "sort_2", "couche_1", "couche_2" ];
 			for(i = 0; i <= ConstantsApp.MONSTERS_COUNT; i++) {
-				if(Fewf.assets.getLoadedClass( "$Monstre_"+i+"_mort" ) != null) {
+				//if(Fewf.assets.getLoadedClass( "$Monstre_"+i+"_statique" ) != null) {
+				if(_oneOfClassesExist("$Monstre_"+i+"_", tPoseClasses)) {
 					tMonsterData = new MonsterData(i);
 					for(j = 0; j < tPoseClasses.length; j++) {
 						tClass = Fewf.assets.getLoadedClass( "$Monstre_"+i+"_"+tPoseClasses[j] );
@@ -40,13 +32,22 @@ package app.data
 							tMonsterData.poses.push( new ItemData({ id:tPoseClasses[j], itemClass:tClass }) );
 						}
 					}
-					this.monsters.push( tMonsterData );
+					monsters.push( tMonsterData );
 				}
 			}
 		}
 		
+		private static function _oneOfClassesExist(pPrefix:String, pSuffixes:Array) : Boolean {
+			for(var i = 0; i < pSuffixes.length; i++) {
+				if(Fewf.assets.getLoadedClass( pPrefix+pSuffixes[i] ) != null) {
+					return true;
+				}
+			}
+			return false;
+		}
+		
 		// pData = { base:String, type:String, after:String, pad:int, map:Array, sex:Boolean }
-		private function _setupCostumeArray(pData:Object) : Array {
+		private static function _setupCostumeArray(pData:Object) : Array {
 			var tArray:Array = new Array();
 			var tClassName:String;
 			var tClass:Class;
@@ -82,14 +83,14 @@ package app.data
 			return tArray;
 		}
 		
-		public function zeroPad(number:int, width:int):String {
+		public static function zeroPad(number:int, width:int):String {
 			var ret:String = ""+number;
 			while( ret.length < width )
 				ret="0" + ret;
 			return ret;
 		}
 		
-		public function getArrayByType(pType:String) : Array {
+		public static function getArrayByType(pType:String) : Array {
 			switch(pType) {
 				case ITEM.HAIR:		return hair;
 				case ITEM.HEAD:		return head;
@@ -100,19 +101,19 @@ package app.data
 				
 				case ITEM.SKIN:		return skins;
 				case ITEM.POSE:		return poses;
-				default: trace("[Costumes](getArrayByType) Unknown type: "+pType);
+				default: trace("[GameAssets](getArrayByType) Unknown type: "+pType);
 			}
 			return null;
 		}
 		
-		public function getItemFromTypeID(pType:String, pID:String) : ItemData {
+		public static function getItemFromTypeID(pType:String, pID:String) : ItemData {
 			return FewfUtils.getFromArrayWithKeyVal(getArrayByType(pType), "id", pID);
 		}
 
 		/****************************
 		* Color
 		*****************************/
-			public function copyColor(copyFromMC:MovieClip, copyToMC:MovieClip) : MovieClip {
+			public static function copyColor(copyFromMC:MovieClip, copyToMC:MovieClip) : MovieClip {
 				if (copyFromMC == null || copyToMC == null) { return; }
 				var tChild1:*=null;
 				var tChild2:*=null;
@@ -130,7 +131,7 @@ package app.data
 				return copyToMC;
 			}
 
-			public function colorDefault(pMC:MovieClip) : MovieClip {
+			public static function colorDefault(pMC:MovieClip) : MovieClip {
 				if (pMC == null) { return; }
 				
 				var tChild:*=null;
@@ -150,7 +151,7 @@ package app.data
 			}
 			
 			// pData = { obj:DisplayObject, color:String OR int, ?swatch:int, ?name:String }
-			public function colorItem(pData:Object) : void {
+			public static function colorItem(pData:Object) : void {
 				if (pData.obj == null) { return; }
 				
 				var tHex:int = pData.color is Number ? pData.color : int("0x" + pData.color);
@@ -169,14 +170,14 @@ package app.data
 			}
 			
 			// pColor is an int hex value. ex: 0x000000
-			public function applyColorToObject(pItem:DisplayObject, pColor:int) : void {
+			public static function applyColorToObject(pItem:DisplayObject, pColor:int) : void {
 				var tR:*=pColor >> 16 & 255;
 				var tG:*=pColor >> 8 & 255;
 				var tB:*=pColor & 255;
 				pItem.transform.colorTransform = new flash.geom.ColorTransform(tR / 128, tG / 128, tB / 128);
 			}
 			
-			public function getNumOfCustomColors(pMC:MovieClip) : int {
+			public static function getNumOfCustomColors(pMC:MovieClip) : int {
 				var tChild:*=null;
 				var num:int = 0;
 				var i:int = 0;
@@ -195,7 +196,7 @@ package app.data
 		/****************************
 		* Asset Creation
 		*****************************/
-			public function getItemImage(pData:ItemData) : MovieClip {
+			public static function getItemImage(pData:ItemData) : MovieClip {
 				var tItem:MovieClip;
 				/*switch(pData.type) {
 					case ITEM.SHIRT:
@@ -212,7 +213,7 @@ package app.data
 			}
 		
 		// Converts the image to a PNG bitmap and prompts the user to save.
-		public function saveMovieClipAsBitmap(pObj:DisplayObject, pName:String="character", pScale:Number=1) : void
+		public static function saveMovieClipAsBitmap(pObj:DisplayObject, pName:String="character", pScale:Number=1) : void
 		{
 			if(!pObj){ return; }
 			

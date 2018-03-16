@@ -15,6 +15,13 @@
 		"attaque":				{ "text":"Ataque" },
 		"touche":				{ "text":"Dano" },
 		"stun":					{ "text":"Stun" },
-		"mort":					{ "text":"Morte" }
+		"mort":					{ "text":"Morte" },
+		"statique/Combat":		{ "text":"Idle2" },
+		"course/Course":		{ "text":"Run" },
+		"assis":				{ "text":"Sit" },
+		"couche_1":				{ "text":"Lie Down" },
+		"couche_2":				{ "text":"Lie Down2" },
+		"sort_1":				{ "text":"Special" },
+		"sort_2":				{ "text":"Special" }
 	}
 }

@@ -3,7 +3,7 @@
 	"defaultScale": 1,
 	"strings": {
 		"loading_progress":		{ "text":"{0}" },
-		"monster_id":			{ "text":"هوية: {0}" },
+		"monster_id":			{ "text":"ID: {0}" },
 		
 		"loading":				{ "text":"العناصر المتبقية للتحميل: {0}" },
 		"loading_finished":		{ "text":"اكتمل التحميل. جار التهيئة..." },
@@ -14,7 +14,14 @@
 		"course":				{ "text":"المشي" },
 		"attaque":				{ "text":"الهجوم" },
 		"touche":				{ "text":"الضرب" },
-		"stun":					{ "text":"Stun" },
-		"mort":					{ "text":"الموت" }
+		"stun":					{ "text":"فقدان للوعي" },
+		"mort":					{ "text":"الموت" },
+		"statique/Combat":		{ "text":"Idle2" },
+		"course/Course":		{ "text":"Run" },
+		"assis":				{ "text":"Sit" },
+		"couche_1":				{ "text":"Lie Down" },
+		"couche_2":				{ "text":"Lie Down2" },
+		"sort_1":				{ "text":"Special" },
+		"sort_2":				{ "text":"Special" }
 	}
 }
