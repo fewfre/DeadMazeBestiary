@@ -16,11 +16,12 @@
 		"touche":				{ "text":"Touché" },
 		"stun":					{ "text":"Stun" },
 		"mort":					{ "text":"Mort" },
-		"statique/Combat":		{ "text":"Idle2" },
+		"statique/Combat":		{ "text":"Statique2" },
 		"course/Course":		{ "text":"Run" },
-		"assis":				{ "text":"Sit" },
-		"couche_1":				{ "text":"Lie Down" },
-		"couche_2":				{ "text":"Lie Down2" },
+		"marche":				{ "text":"Marche" },
+		"assis":				{ "text":"Assis" },
+		"couche_1":				{ "text":"Couche" },
+		"couche_2":				{ "text":"Couche2" },
 		"sort_1":				{ "text":"Special" },
 		"sort_2":				{ "text":"Special" }
 	}

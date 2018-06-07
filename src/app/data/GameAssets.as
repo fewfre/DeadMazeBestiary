@@ -21,7 +21,7 @@ package app.data
 			monsters = new Array();
 			
 			var tMonsterData:MonsterData, tClass:Class;
-			var tPoseClasses = [ "statique", "statique/Combat", "assis", "course", "course/Course", "attaque", "touche", "stun", "mort", "sort_1", "sort_2", "couche_1", "couche_2" ];
+			var tPoseClasses = [ "statique", "statique/Combat", "assis", "course", "course/Course", "marche", "attaque", "touche", "stun", "mort", "sort_1", "sort_2", "couche_1", "couche_2" ];
 			for(i = 0; i <= ConstantsApp.MONSTERS_COUNT; i++) {
 				//if(Fewf.assets.getLoadedClass( "$Monstre_"+i+"_statique" ) != null) {
 				if(_oneOfClassesExist("$Monstre_"+i+"_", tPoseClasses)) {

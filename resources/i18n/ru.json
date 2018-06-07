@@ -18,6 +18,7 @@
 		"mort":					{ "text":"Cмерть" },
 		"statique/Combat":		{ "text":"Idle2" },
 		"course/Course":		{ "text":"Run" },
+		"marche":				{ "text":"Strut" },
 		"assis":				{ "text":"Sit" },
 		"couche_1":				{ "text":"Lie Down" },
 		"couche_2":				{ "text":"Lie Down2" },

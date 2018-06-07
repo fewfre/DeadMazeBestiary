@@ -1,3 +1,8 @@
+== V1.6 - 6 June 2018 ==
+- Async loading added, that preserves load order.
+- Support for "Strut" animation added (added prior to June, but never committed)
+
+
 == V1.5 - 15 March 2018 ==
 - Fixed bug preventing some entries from showing up
 - Added support for newer animation names
