@@ -77,6 +77,9 @@ package app.world.elements
 			var tScale:Number = 1;
 			if(_figure) { tScale = figureScale; _monsterTray.removeChild(_figure); }
 			_figure = _monsterTray.addChild(new _data.poses[e.data.index].itemClass());
+			// Don't let the pose eat mouse input
+			_figure.mouseChildren = false;
+			_figure.mouseEnabled = false;
 			figureScale = tScale;
 			toggleAnimation(GameAssets.animatePose);
 			untoggle(e.target);
