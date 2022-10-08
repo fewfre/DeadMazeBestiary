@@ -110,15 +110,18 @@ package app
 		}
 		
 		private function _getDefaultLang(pConfigLang:String) : String {
-			var tFlagDefaultLangExists = false;
+			// If user manually picked a language previously, override system check
+			var detectedLang = Fewf.sharedObject.getData("lang") || Capabilities.language;
+			
+			var tFlagDefaultLangExists:Boolean = false;
 			// http://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/flash/system/Capabilities.html#language
-			if(Capabilities.language) {
-				var tLanguages = _config.languages.list;
-				for each(tLang in tLanguages) {
-					if(Capabilities.language == tLang.code || Capabilities.language == tLang.code.split("-")[0]) {
-						return tLang.code;
+			if(detectedLang) {
+				var tLanguages:Array = _config.languages.list;
+				for(var i:Object in tLanguages) {
+					if(detectedLang == tLanguages[i].code || detectedLang == tLanguages[i].code.split("-")[0]) {
+						return tLanguages[i].code;
 					}
-					if(pConfigLang == tLang.code) {
+					if(pConfigLang == tLanguages[i].code) {
 						tFlagDefaultLangExists = true;
 					}
 				}

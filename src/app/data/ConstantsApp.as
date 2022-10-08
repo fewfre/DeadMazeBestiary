@@ -12,8 +12,8 @@ package app.data
 		/****************************
 		* General
 		*****************************/
-		public static const VERSION					: String = "1.7";
-		public static const SOURCE_URL				: String = "https://github.com/fewfre/DeadMazeBestiary";
+		public static const VERSION					: String = "1.8";
+		public static const SOURCE_URL				: String = "https://github.com/fewfre/DeadMazeBestiary/blob/master/changelog";
 		
 		public static const MONSTERS_COUNT			: int = 65;
 		
