@@ -134,12 +134,12 @@ package app.world
 		private function _onMouseWheel(pEvent:MouseEvent) : void {
 			//if(this.mouseX < this.shopTabs.x) {
 				_toolbox.scaleSlider.updateViaMouseWheelDelta(pEvent.delta);
-				curMonsterTray.figureScale = _toolbox.scaleSlider.getValueAsScale();
+				curMonsterTray.figureScale = _toolbox.scaleSlider.value;
 			//}
 		}
 		
 		private function _onScaleSliderChange(pEvent:Event):void {
-			curMonsterTray.figureScale = _toolbox.scaleSlider.getValueAsScale();
+			curMonsterTray.figureScale = _toolbox.scaleSlider.value;
 		}
 		
 		private function _onPlayerAnimationToggle(pEvent:Event):void {
@@ -184,7 +184,7 @@ package app.world
 				if(curMonsterTray) { monsterTrayCont.removeChild(curMonsterTray); }
 				curMonsterTrayIndex = pNum < 0 ? tabPanes.length+pNum : ( pNum >= tabPanes.length ? tabPanes.length-pNum : pNum );
 				curMonsterTray = monsterTrayCont.addChild(tabPanes[curMonsterTrayIndex]);
-				curMonsterTray.open(_toolbox.scaleSlider.value*0.1);
+				curMonsterTray.open(_toolbox.scaleSlider.value);
 			}
 		//}END tMonsterTray Management
 	}
