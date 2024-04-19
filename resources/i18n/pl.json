@@ -8,21 +8,21 @@
 		"loading":				{ "text":"Rzeczy pozostałe do załadowania {0}" },
 		"loading_finished":		{ "text":"Ładowanie zakończone. Inicjowanie..." },
 		"version":				{ "text":"Wersja: {0}" },
-		"translated_by":		{ "text":"Przetłumaczone przez: Akanaria" },
+		"translated_by":		{ "text":"Przetłumaczone przez: Akanaria,\nKitayoshi#8874" },
 		
 		"statique":				{ "text":"Bez ruchu" },
 		"course":				{ "text":"Chód" },
 		"attaque":				{ "text":"Atak" },
 		"touche":				{ "text":"Uderzenie" },
-		"stun":					{ "text":"Stun" },
+		"stun":					{ "text":"Ogłuszenie" },
 		"mort":					{ "text":"Śmierć" },
-		"statique/Combat":		{ "text":"Idle2" },
-		"course/Course":		{ "text":"Run" },
+		"statique/Combat":		{ "text":"Bez ruchu2", "scale":0.95 },
+		"course/Course":		{ "text":"Bieg" },
 		"marche":				{ "text":"Strut" },
-		"assis":				{ "text":"Sit" },
-		"couche_1":				{ "text":"Lie Down" },
-		"couche_2":				{ "text":"Lie Down2" },
-		"sort_1":				{ "text":"Special" },
-		"sort_2":				{ "text":"Special" }
+		"assis":				{ "text":"Siedzenie" },
+		"couche_1":				{ "text":"Leżenie" },
+		"couche_2":				{ "text":"Leżenie 2" },
+		"sort_1":				{ "text":"Specjalne" },
+		"sort_2":				{ "text":"Specjalne" }
 	}
 }
